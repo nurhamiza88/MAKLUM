@@ -62,7 +62,25 @@ st.markdown("""
     border:1px solid #dddddd;
     margin-bottom:25px;
 }
-
+.english{
+    display:block;
+    width:100%;
+    text-align:center;
+    color:#6c757d;
+    font-size:14px;
+    font-style:italic;
+    font-weight:400;
+    line-height:1.5;
+    margin-top:6px;
+    margin-bottom:18px;
+}
+.english-left{
+    color:#6c757d;
+    font-size:13px;
+    font-style:italic;
+    margin-top:-8px;
+    margin-bottom:10px;
+}
 </style>
 """, unsafe_allow_html=True)
 # ==========================================================
@@ -100,15 +118,15 @@ def papar_instrumen(
     with col2:
 
         st.info(
-            "Sila muat turun dan teliti instrumen sebelum memberikan maklum balas."
+            "Sila muat turun dan teliti instrumen sebelum memberikan maklum balas. | Please download and review the instrument before providing feedback."
         )
 
     st.caption(
-        "STS = Sangat Tidak Setuju | "
-        "TS = Tidak Setuju | "
-        "N = Neutral | "
-        "S = Setuju | "
-        "SS = Sangat Setuju"
+        "STS = Sangat Tidak Setuju/Very Disagree |"
+        "TS = Tidak Setuju/Disagree |"
+        "N = Neutral/Neutral |"
+        "S = Setuju/Agree |"
+        "SS = Sangat Setuju/Very Agree"
     )
 
     pilihan = [
@@ -136,17 +154,17 @@ def papar_instrumen(
         )
 
     kekuatan = st.text_area(
-        "Kekuatan Instrumen",
+        "Kekuatan Instrumen | Strengths of the Instrument",
         key=f"{kod}_kekuatan"
     )
 
     cadangan = st.text_area(
-        "Cadangan Penambahbaikan",
+        "Cadangan Penambahbaikan | Suggestions for Improvement",
         key=f"{kod}_cadangan"
     )
 
     tambah = st.text_area(
-        "Item yang perlu ditambah / digugurkan",
+        "Item yang perlu ditambah / digugurkan | Items to be added / removed",
         key=f"{kod}_item"
     )
 
@@ -170,7 +188,12 @@ st.markdown(
     """
 <div class='subtitle'>
 Platform Maklum Balas Ahli Akademik<br>
-Penambahbaikan Instrumen Penilaian Pembelajaran
+bagi Penambahbaikan Instrumen Penilaian Pembelajaran
+</div>
+
+<div class='english'>
+Academic Staff Feedback Platform<br>
+for the Enhancement of Learning Assessment Instruments
 </div>
 """,
     unsafe_allow_html=True
@@ -194,6 +217,12 @@ st.divider()
 
 st.subheader("📢 Tujuan")
 
+st.markdown("""
+<div class='english-left'>
+Purpose
+</div>
+""", unsafe_allow_html=True)
+
 st.info("""
 
 **Tujuan**
@@ -206,11 +235,22 @@ Projek Tahun Akhir, Latihan Mengajar dan Latihan Industri.
 Maklum balas yang diterima akan membantu memastikan instrumen yang digunakan sentiasa relevan, 
 jelas, berkesan serta selaras dengan keperluan semasa dan Objektif Kualiti Universiti.
 
+**Purpose**
+
+This survey aims to obtain feedback from academic staff for the 
+review and enhancement of the Learning Evaluation instrument used 
+to assess the quality of teaching and learning (T&L) delivery, 
+Final Year Projects, Teaching Practicum, and Industrial Training.
+
+The feedback received will support the continuous improvement of the 
+instrument to ensure that it remains relevant, clear, effective, 
+and aligned with current needs as well as the University's Quality Objectives.
+
 
 """)
 
 agree = st.checkbox(
-    "Saya telah membaca maklumat di atas dan bersetuju memberikan maklum balas."
+    "Saya telah membaca maklumat di atas dan bersetuju memberikan maklum balas.| I have read the above information and agree to provide feedback."
 )
 
 if not agree:
@@ -221,7 +261,13 @@ if not agree:
 
 st.divider()
 
-st.subheader("👤 Maklumat Ahli Akademik")
+st.subheader("📋 Maklumat Ahli Akademik")
+
+st.markdown("""
+<div class='english-left'>
+Academic Staff Information
+</div>
+""", unsafe_allow_html=True)
 
 st.write("Sila lengkapkan maklumat berikut sebelum memberikan maklum balas.")
 
@@ -230,23 +276,23 @@ col1, col2 = st.columns(2)
 with col1:
 
     nama = st.text_input(
-        "Nama *"
+        "Nama | Name *"
     )
 
     no_pekerja = st.text_input(
-        "No. Pekerja *"
+        "No. Pekerja | Employee Number *"
     )
 
 with col2:
 
     email = st.text_input(
-        "Emel Rasmi *"
+        "Emel Rasmi | Official Email *"
     )
 
     fakulti = st.selectbox(
-        "Fakulti *",
+        "Fakulti | Faculty *",
         [
-            "-- Sila Pilih Fakulti --",
+            "-- Sila Pilih Fakulti | Please Select Faculty --",
             "FBK",
             "FKMT",
             "FMSP",
@@ -272,9 +318,9 @@ st.divider()
 
 pdp_jawapan, pdp_kekuatan, pdp_cadangan, pdp_item = papar_instrumen(
 
-    tajuk="📘 Instrumen PdP",
+    tajuk="📘 Instrumen Pengajaran dan Pembelajaran (PdP) | Teaching and Learning (T&L) Evaluation Instrument",
 
-    deskripsi="Menilai Kualiti Pengajaran dan Pembelajaran",
+    deskripsi="Menilai Kualiti Pengajaran dan Pembelajaran | Assessing the Quality of Teaching and Learning",
 
     pdf_file="instrumen/Instrumen_PdP.pdf",
 
@@ -292,9 +338,9 @@ pdp_jawapan, pdp_kekuatan, pdp_cadangan, pdp_item = papar_instrumen(
 
 lm_jawapan, lm_kekuatan, lm_cadangan, lm_item = papar_instrumen(
 
-    tajuk="👨‍🏫 Instrumen Latihan Mengajar",
+    tajuk="👨‍🏫 Instrumen Latihan Mengajar | Teaching Practice Evaluation Instrument",
 
-    deskripsi="Menilai Kualiti Penyeliaan Latihan Mengajar",
+    deskripsi="Menilai Kualiti Penyeliaan Latihan Mengajar | Assessing the Quality of Teaching Practice",
 
     pdf_file="instrumen/Instrumen_LM.pdf",
 
@@ -312,9 +358,9 @@ lm_jawapan, lm_kekuatan, lm_cadangan, lm_item = papar_instrumen(
 
 li_jawapan, li_kekuatan, li_cadangan, li_item = papar_instrumen(
 
-    tajuk="🏭 Instrumen Latihan Industri",
+    tajuk="🏭 Instrumen Latihan Industri | Industrial Training Evaluation Instrument",
 
-    deskripsi="Menilai Kualiti Penyeliaan Latihan Industri",
+    deskripsi="Menilai Kualiti Penyeliaan Latihan Industri | Assessing the Quality of Industrial Training",
 
     pdf_file="instrumen/Instrumen_LI.pdf",
 
@@ -332,9 +378,9 @@ li_jawapan, li_kekuatan, li_cadangan, li_item = papar_instrumen(
 
 fyp_jawapan, fyp_kekuatan, fyp_cadangan, fyp_item = papar_instrumen(
 
-    tajuk="🎓 Instrumen Projek Tahun Akhir",
+    tajuk="🎓 Instrumen Projek Tahun Akhir | Final Year Project Evaluation Instrument",
 
-    deskripsi="Menilai Kualiti Penyeliaan Projek Tahun Akhir",
+    deskripsi="Menilai Kualiti Penyeliaan Projek Tahun Akhir | Assessing the Quality of Final Year Project",
 
     pdf_file="instrumen/Instrumen_FYP.pdf",
 
@@ -351,7 +397,7 @@ fyp_jawapan, fyp_kekuatan, fyp_cadangan, fyp_item = papar_instrumen(
 # ==========================================================
 
 submit = st.button(
-    "✅ HANTAR SEMUA MAKLUM BALAS",
+    "✅ HANTAR SEMUA MAKLUM BALAS | SUBMIT ALL FEEDBACK",
     type="primary",
     use_container_width=True
 )
